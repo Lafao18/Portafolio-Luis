@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoVision Corp - Portal Corporativo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navegación */
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled .logo {
+            color: #333;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav.scrolled .nav-menu a {
+            color: #333;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            color: #333;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Secciones */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #ffd700;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Panel de Administración */
+        .admin-panel {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 2rem;
+            border-radius: 20px;
+            padding: 2rem;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .stat-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Chatbot */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+            50% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); }
+            100% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); }
+        }
+
+        .chatbot-toggle svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .chatbot-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transform: translateY(100px) scale(0);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+        }
+
+        .chatbot-container.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chatbot-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chatbot-body {
+            height: 350px;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chatbot-message {
+            padding: 0.8rem;
+            border-radius: 15px;
+            max-width: 80%;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .chatbot-message.bot {
+            background: #f0f0f0;
+            align-self: flex-start;
+        }
+
+        .chatbot-message.user {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            align-self: flex-end;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 1rem;
+            gap: 0.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            padding: 0.8rem 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chatbot-input input:focus {
+            border-color: #667eea;
+        }
+
+        .chatbot-send {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.1);
+        }
+
+        .faq-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .faq-button {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 0.8rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .faq-button:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .chatbot-container {
+                width: 90%;
+                right: 5%;
+                left: 5%;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">TechnoVision Corp</a>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#admin">Administración</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Transformando el Futuro Digital</h1>
+            <p>Soluciones corporativas innovadoras que impulsan tu negocio hacia el éxito. Tecnología de vanguardia, resultados excepcionales.</p>
+            <a href="#servicios" class="cta-button">Descubre Nuestros Servicios</a>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="section" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Desarrollo Web</h3>
+                <p>Sitios web modernos y aplicaciones web escalables con las últimas tecnologías.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">☁️</div>
+                <h3>Cloud Computing</h3>
+                <p>Migración y gestión de infraestructura en la nube para máxima eficiencia.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔐</div>
+                <h3>Ciberseguridad</h3>
+                <p>Protección integral de datos y sistemas contra amenazas digitales.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Análisis de Datos</h3>
+                <p>Transformamos datos en insights estratégicos para la toma de decisiones.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Inteligencia Artificial</h3>
+                <p>Implementación de soluciones AI para automatizar procesos complejos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Apps Móviles</h3>
+                <p>Desarrollo de aplicaciones nativas y multiplataforma de alta calidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panel de Administración -->
+    <section class="admin-panel" id="admin">
+        <div class="admin-header">
+            <h2>Panel de Administración</h2>
+            <span>Dashboard Ejecutivo</span>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <div class="stat-number">1,247</div>
+                <div>Proyectos Completados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98.5%</div>
+                <div>Satisfacción del Cliente</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div>Soporte Técnico</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div>Clientes Activos</div>
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+            <div>
+                <h3>Métricas de Rendimiento</h3>
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                    <p>📈 Crecimiento mensual: <strong>+15%</strong></p>
+                    <p>⚡ Tiempo de respuesta: <strong>< 24h</strong></p>
+                    <p>🎯 Tasa de conversión: <strong>67%</strong></p>
+                </div>
+            </div>
+            <div>
+                <h3>Accesos Rápidos</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+                    <button style="background: #667eea; color: white; border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer;">Gestión de Usuarios</button>
+                    <button style="background: #764ba2; color: white; border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer;">Reportes Avanzados</button>
+                    <button style="background: #ffd700; color: #333; border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer;">Configuración</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Toggle -->
+    <div class="chatbot-toggle" id="chatbotToggle">
+        <svg viewBox="0 0 24 24">
+            <path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6M14,14H6V12H14M18,8H6V6H18"/>
+        </svg>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container" id="chatbotContainer">
+        <div class="chatbot-header">
+            <h3>Asistente Virtual</h3>
+            <button class="chatbot-close" id="chatbotClose">×</button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chatbot-message bot">
+                ¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte hoy?
+            </div>
+            <div class="faq-buttons">
+                <button class="faq-button" data-question="¿Cuáles son sus servicios?">¿Cuáles son sus servicios?</button>
+                <button class="faq-button" data-question="¿Cómo puedo contactarlos?">¿Cómo puedo contactarlos?</button>
+                <button class="faq-button" data-question="¿Cuánto tiempo toma un proyecto?">¿Cuánto tiempo toma un proyecto?</button>
+                <button class="faq-button" data-question="¿Ofrecen soporte técnico?">¿Ofrecen soporte técnico?</button>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Escribe tu pregunta...">
+            <button class="chatbot-send" id="chatbotSend">▶</button>
+        </div>
+    </div>
+
+    <script>
+        // Navegación dinámica
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Chatbot funcionalidad
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotContainer = document.getElementById('chatbotContainer');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotBody = document.getElementById('chatbotBody');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+
+        let chatbotOpen = false;
+
+        chatbotToggle.addEventListener('click', function() {
+            toggleChatbot();
+        });
+
+        chatbotClose.addEventListener('click', function() {
+            toggleChatbot();
+        });
+
+        function toggleChatbot() {
+            chatbotOpen = !chatbotOpen;
+            if (chatbotOpen) {
+                chatbotContainer.classList.add('active');
+            } else {
+                chatbotContainer.classList.remove('active');
+            }
+        }
+
+        // Respuestas predefinidas del chatbot
+        const responses = {
+            "¿Cuáles son sus servicios?": "Ofrecemos desarrollo web, cloud computing, ciberseguridad, análisis de datos, inteligencia artificial y desarrollo de apps móviles.",
+            "¿Cómo puedo contactarlos?": "Puedes contactarnos al +593 99 123 4567, email: contacto@technovision.com o visitar nuestras oficinas en Quito, Ecuador.",
+            "¿Cuánto tiempo toma un proyecto?": "El tiempo varía según la complejidad: proyectos simples 2-4 semanas, proyectos complejos 2-6 meses. Te daremos un cronograma detallado.",
+            "¿Ofrecen soporte técnico?": "Sí, ofrecemos soporte técnico 24/7 con diferentes planes de mantenimiento adaptados a tus necesidades.",
+            "default": "Gracias por tu pregunta. Nuestro equipo se pondrá en contacto contigo pronto. ¿Hay algo más en lo que pueda ayudarte?"
+        };
+
+        // Manejar preguntas frecuentes
+        document.querySelectorAll('.faq-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const question = this.getAttribute('data-question');
+                addMessage(question, 'user');
+                setTimeout(() => {
+                    addMessage(responses[question], 'bot');
+                }, 1000);
+            });
+        });
+
+        // Manejar input del chatbot
+        chatbotSend.addEventListener('click', function() {
+            sendMessage();
+        });
+
+        chatbotInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+                
+                setTimeout(() => {
+                    const response = getResponse(message);
+                    addMessage(response, 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chatbot-message ${sender}`;
+            messageDiv.textContent = text;
+            chatbotBody.appendChild(messageDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('servicio') || lowerMessage.includes('qué hacen')) {
+                return responses["¿Cuáles son sus servicios?"];
+            } else if (lowerMessage.includes('contacto') || lowerMessage.includes('teléfono') || lowerMessage.includes('email')) {
+                return responses["¿Cómo puedo contactarlos?"];
+            } else if (lowerMessage.includes('tiempo') || lowerMessage.includes('cuánto') || lowerMessage.includes('duración')) {
+                return responses["¿Cuánto tiempo toma un proyecto?"];
+            } else if (lowerMessage.includes('soporte') || lowerMessage.includes('ayuda') || lowerMessage.includes('mantenimiento')) {
+                return responses["¿Ofrecen soporte técnico?"];
+            } else {
+                return responses["default"];
+            }
+        }
+
+        // Smooth scrolling para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animaciones al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animaciones
+        document.querySelectorAll('.service-card, .stat-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

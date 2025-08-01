@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vestido Elegante Rosa - Oferta Exclusiva | ModaStyle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: linear-gradient(135deg, #fff0f6 0%, #ffe3ed 100%);
+            color: #1e293b;
+            margin: 0;
+            padding: 0;
+        }
+        .oferta-banner {
+            background: linear-gradient(90deg, #e91e63 60%, #ff6b6b 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem 1.2rem 1rem;
+            border-radius: 0 0 40px 40px;
+            box-shadow: 0 8px 32px rgba(233,30,99,0.13);
+            position: relative;
+        }
+        .oferta-banner h1 {
+            font-size: 2.7rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px rgba(233,30,99,0.10);
+        }
+        .oferta-badge {
+            display: inline-block;
+            background: #fff;
+            color: #e91e63;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 20px;
+            padding: 0.4rem 1.5rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 12px rgba(233,30,99,0.10);
+            letter-spacing: 1px;
+            animation: pulse 1.2s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 #ff6b6b44; }
+            100% { box-shadow: 0 0 16px 8px #ff6b6b22; }
+        }
+        .oferta-timer {
+            display: inline-block;
+            background: #fff0f6;
+            color: #e91e63;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            padding: 0.3rem 1.2rem;
+            margin-top: 0.7rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(233,30,99,0.08);
+        }
+        .container {
+            max-width: 1100px;
+            margin: -2.5rem auto 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(233,30,99,0.10);
+            padding: 2.5rem 2rem 3rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .gallery {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        .gallery img {
+            width: 320px;
+            height: 220px;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(233,30,99,0.10);
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.04) rotate(-2deg);
+        }
+        .oferta-precio {
+            text-align:center;
+            margin-bottom:2rem;
+        }
+        .oferta-precio .nuevo {
+            color: #e91e63;
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-right: 1rem;
+        }
+        .oferta-precio .viejo {
+            color: #bbb;
+            text-decoration: line-through;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #e91e63;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .description {
+            font-size: 1.15rem;
+            color: #374151;
+            margin-bottom: 1.2rem;
+        }
+        .advantages {
+            background: linear-gradient(90deg, #fff0f6 60%, #f8fafc 100%);
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 12px rgba(233,30,99,0.06);
+        }
+        .advantages ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            color: #374151;
+        }
+        .advantages li {
+            margin-bottom: 0.7rem;
+            font-size: 1.08rem;
+            position: relative;
+        }
+        .advantages li::before {
+            content: '🔥';
+            margin-right: 0.5rem;
+            color: #e91e63;
+        }
+        .materials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .materials-list {
+            flex: 1 1 250px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .materials-list ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+        .materials-list li {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+        .materials-img {
+            flex: 1 1 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .materials-img img {
+            width: 180px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(233,30,99,0.10);
+        }
+        .fabrication {
+            background: #fff0f6;
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 12px rgba(233,30,99,0.06);
+        }
+        .fabrication ol {
+            margin: 0 0 0 1.5rem;
+            color: #374151;
+        }
+        .fabrication li {
+            margin-bottom: 0.7rem;
+            font-size: 1.08rem;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2.5rem;
+            color: #fff;
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            padding: 0.8rem 2.2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 16px rgba(233,30,99,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+        }
+        .back-link:hover {
+            background: #e91e63;
+            color: #fff0f6;
+            transform: translateY(-2px) scale(1.04);
+        }
+        @media (max-width: 900px) {
+            .gallery img {
+                width: 95vw;
+                max-width: 350px;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .materials {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="oferta-banner">
+        <div class="oferta-badge">OFERTA EXCLUSIVA</div>
+        <h1>Vestido Elegante Rosa</h1>
+        <div class="oferta-timer">¡Solo por tiempo limitado!</div>
+    </div>
+    <div class="container">
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Vestido Elegante Rosa - Vista principal">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80" alt="Detalle de la tela">
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Proceso de confección artesanal">
+        </div>
+        <div class="oferta-precio">
+            <span class="nuevo">$79.99</span>
+            <span class="viejo">$99.99</span>
+        </div>
+        <div class="section">
+            <div class="section-title">Descripción</div>
+            <div class="description">
+                El <strong>Vestido Elegante Rosa</strong> es la prenda ideal para quienes buscan destacar con un look romántico y sofisticado. Su diseño atemporal y su confección artesanal lo convierten en una pieza imprescindible para eventos especiales y ocasiones únicas.
+            </div>
+        </div>
+        <div class="section advantages">
+            <div class="section-title">Ventajas</div>
+            <ul>
+                <li>Tela suave y ligera que se adapta perfectamente al cuerpo.</li>
+                <li>Color rosa pastel que resalta la feminidad y elegancia.</li>
+                <li>Costuras reforzadas y acabados de alta costura.</li>
+                <li>Diseño versátil: ideal para fiestas, cenas y eventos formales.</li>
+                <li>Fácil de combinar con accesorios y calzado.</li>
+            </ul>
+        </div>
+        <div class="section materials">
+            <div class="materials-list">
+                <div class="section-title">Tipo de Tela y Materiales</div>
+                <ul>
+                    <li><strong>Exterior:</strong> 95% poliéster, 5% elastano.</li>
+                    <li><strong>Forro:</strong> Microfibra suave y transpirable.</li>
+                    <li><strong>Detalles:</strong> Encaje floral y cierre invisible.</li>
+                </ul>
+            </div>
+            <div class="materials-img">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Tela y detalles del vestido">
+            </div>
+        </div>
+        <div class="section fabrication">
+            <div class="section-title">¿Cómo se fabrica?</div>
+            <div class="description">
+                Cada vestido es confeccionado por modistas expertas que cuidan cada detalle, desde el corte de la tela hasta el acabado final. El proceso incluye:
+            </div>
+            <ol>
+                <li>Selección de telas de alta calidad.</li>
+                <li>Corte y ensamblaje de las piezas.</li>
+                <li>Aplicación de detalles de encaje y costuras reforzadas.</li>
+                <li>Control de calidad y planchado profesional.</li>
+            </ol>
+            <div class="description" style="margin-top:1rem;">
+                El resultado es un vestido único, cómodo y elegante, pensado para que brilles en cada ocasión.
+            </div>
+        </div>
+        <a href="E-commerce Moderno.html#productos" class="back-link" style="margin-right:1.5rem;">← Volver a la tienda</a>
+        <a href="E-commerce Moderno.html#productos" onclick="alert('Para agregar este producto al carrito, búscalo en la tienda y haz clic en Agregar al Carrito.');" style="display:inline-block;background:linear-gradient(135deg,#e91e63,#ff6b6b);color:#fff;padding:0.8rem 2.2rem;border-radius:30px;text-decoration:none;font-weight:800;font-size:1.1rem;box-shadow:0 4px 16px rgba(233,30,99,0.10);transition:background 0.2s, color 0.2s, transform 0.2s;">Agregar al Carrito</a>
+    </div>
+</body>
+</html>

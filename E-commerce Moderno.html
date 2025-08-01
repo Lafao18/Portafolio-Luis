@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModaStyle - Tu Estilo, Tu Personalidad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: clamp(0.5rem, 2vw, 1rem) 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 4vw, 2rem);
+        }
+
+        .logo {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            color: #e91e63;
+            text-decoration: none;
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: clamp(1rem, 3vw, 2rem);
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            transition: color 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: #e91e63;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e91e63;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: clamp(0.5rem, 2vw, 1rem);
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            background: #f3f4f6;
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e91e63;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            min-width: 44px;
+            min-height: 44px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #374151;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 1rem;
+        }
+
+        .mobile-nav ul li {
+            margin: 0.5rem 0;
+        }
+
+        .mobile-nav ul li a {
+            display: block;
+            padding: 1rem;
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover {
+            background: #f3f4f6;
+            color: #e91e63;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(255, 107, 107, 0.1)),
+                        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"%3E%3Cdefs%3E%3ClinearGradient id="bg" x1="0%25" y1="0%25" x2="100%25" y2="100%25"%3E%3Cstop offset="0%25" style="stop-color:%23e91e63;stop-opacity:0.1"/%3E%3Cstop offset="100%25" style="stop-color:%23ff6b6b;stop-opacity:0.1"/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width="1200" height="800" fill="url(%23bg)"/%3E%3Cg fill="%23e91e63" opacity="0.1"%3E%3Ccircle cx="200" cy="150" r="100"/%3E%3Ccircle cx="1000" cy="200" r="150"/%3E%3Ccircle cx="300" cy="600" r="80"/%3E%3Ccircle cx="900" cy="650" r="120"/%3E%3C/g%3E%3C/svg%3E');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: clamp(1rem, 4vw, 2rem);
+            margin-top: clamp(70px, 10vw, 80px);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(2rem, 5vw, 4rem);
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-content .highlight {
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            min-width: 150px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e5e7eb;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #e91e63;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .fashion-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(0.5rem, 2vw, 1rem);
+            max-width: min(400px, 80vw);
+        }
+
+        .fashion-item {
+            background: white;
+            border-radius: 15px;
+            padding: clamp(1rem, 4vw, 2rem);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fashion-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .fashion-item:nth-child(1) { background: linear-gradient(135deg, #ff6b6b, #ffa500); }
+        .fashion-item:nth-child(2) { background: linear-gradient(135deg, #e91e63, #9c27b0); }
+        .fashion-item:nth-child(3) { background: linear-gradient(135deg, #2196f3, #00bcd4); }
+        .fashion-item:nth-child(4) { background: linear-gradient(135deg, #4caf50, #8bc34a); }
+
+        .fashion-item span {
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /* Categories Section */
+        .categories {
+            background: #f8fafc;
+        }
+
+        .categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-image {
+            height: clamp(200px, 30vw, 250px);
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(3rem, 8vw, 4rem);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:nth-child(1) .category-image { background: linear-gradient(135deg, #ff6b6b, #ffa500); }
+        .category-card:nth-child(2) .category-image { background: linear-gradient(135deg, #e91e63, #9c27b0); }
+        .category-card:nth-child(3) .category-image { background: linear-gradient(135deg, #2196f3, #00bcd4); }
+        .category-card:nth-child(4) .category-image { background: linear-gradient(135deg, #4caf50, #8bc34a); }
+
+        .category-content {
+            padding: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .category-content h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-content p {
+            color: #64748b;
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .category-price {
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
+            font-weight: 600;
+            color: #e91e63;
+        }
+
+        /* Products Section */
+        .products {
+            background: white;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .products-header > div:first-child {
+            text-align: left;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: clamp(0.5rem, 2vw, 1rem);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 1.5rem);
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #374151;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            white-space: nowrap;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #e91e63;
+            color: white;
+            border-color: #e91e63;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: clamp(250px, 40vw, 300px);
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(2.5rem, 6vw, 3rem);
+            color: #9ca3af;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #e91e63;
+            color: white;
+            padding: clamp(0.2rem, 1vw, 0.3rem) clamp(0.6rem, 2vw, 0.8rem);
+            border-radius: 15px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            font-weight: 600;
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            background: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn:hover {
+            background: #e91e63;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        .product-name {
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-category {
+            color: #64748b;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 700;
+            color: #e91e63;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        .rating-text {
+            color: #64748b;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            color: white;
+            border: none;
+            padding: clamp(0.6rem, 2vw, 0.8rem);
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(400px, 100vw);
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-cart:hover {
+            background: #f3f4f6;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .cart-item-image {
+            width: clamp(60px, 15vw, 80px);
+            height: clamp(60px, 15vw, 80px);
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            color: #9ca3af;
+            flex-shrink: 0;
+        }
+
+        .cart-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .cart-item-price {
+            color: #e91e63;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .qty-btn {
+            background: #f3f4f6;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .qty-btn:hover {
+            background: #e91e63;
+            color: white;
+        }
+
+        .cart-footer {
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
+            font-weight: 600;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #e91e63, #ff6b6b);
+            color: white;
+            border: none;
+            padding: clamp(0.8rem, 3vw, 1rem);
+            border-radius: 10px;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: clamp(2rem, 6vw, 3rem) clamp(1rem, 4vw, 2rem) 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .footer-section h3 {
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #e91e63;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .footer-section ul li a:hover {
+            color: #e91e63;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #cbd5e1;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+
+        /* Special sections styling */
+        .about-us {
+            padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+            background: #fff0f6;
+        }
+
+        .about-us .categories-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(2rem, 6vw, 3rem);
+        }
+
+        .about-us .categories-container > div:first-child {
+            flex: 1 1 350px;
+            min-width: min(300px, 100%);
+            max-width: 500px;
+        }
+
+        .about-us .categories-container > div:last-child {
+            flex: 1 1 350px;
+            min-width: min(300px, 100%);
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-us img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(233,30,99,0.15);
+        }
+
+        .ofertas {
+            padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+            background: linear-gradient(135deg,#fff0f6 60%,#ffe3ed 100%);
+        }
+
+        .ofertas > div {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ofertas h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 900;
+            color: #e91e63;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s both;
+            text-align: center;
+        }
+
+        .ofertas p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: #ff6b6b;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1.2s both;
+            text-align: center;
+        }
+
+        .ofertas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .oferta-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(233,30,99,0.10);
+            padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+            max-width: 340px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 1.3s both;
+            justify-self: center;
+        }
+
+        .oferta-card span {
+            font-size: clamp(2.5rem, 6vw, 3rem);
+        }
+
+        .oferta-card h3 {
+            color: #e91e63;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 700;
+            margin: 1rem 0 0.5rem;
+            text-align: center;
+        }
+
+        .oferta-card .price {
+            color: #ff6b6b;
+            font-size: clamp(1.1rem, 3vw, 1.2rem);
+            font-weight: 700;
+        }
+
+        .oferta-card .old-price {
+            text-decoration: line-through;
+            color: #bbb;
+            font-weight: 400;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .oferta-card p {
+            color: #64748b;
+            margin: 1rem 0 0.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            text-align: center;
+        }
+
+        .oferta-card a,
+        .oferta-card button {
+            background: linear-gradient(135deg,#e91e63,#ff6b6b);
+            color: #fff;
+            padding: clamp(0.6rem, 2vw, 0.7rem) clamp(1.5rem, 4vw, 2rem);
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 2px 12px rgba(233,30,99,0.10);
+            margin-top: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            text-align: center;
+            display: inline-block;
+        }
+
+        .oferta-card button {
+            font-weight: 800;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        .oferta-card a:hover,
+        .oferta-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(233,30,99,0.2);
+        }
+
+        .ofertas-footer {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .ofertas-footer > div {
+            display: inline-block;
+            background: linear-gradient(135deg,#e91e63,#ff6b6b);
+            color: #fff;
+            padding: clamp(1rem, 3vw, 1.2rem) clamp(2rem, 6vw, 3rem);
+            border-radius: 40px;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 800;
+            box-shadow: 0 4px 24px rgba(233,30,99,0.15);
+            animation: fadeInUp 1.7s both;
+            letter-spacing: 1px;
+        }
+
+        /* Contacto Section */
+        .contacto {
+            padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+            background: linear-gradient(135deg,#f8fafc 60%,#fff0f6 100%);
+        }
+
+        .contacto > div {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contacto h2 {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-weight: 900;
+            color: #e91e63;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .contacto p {
+            color: #64748b;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-form {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(233,30,99,0.10);
+            padding: clamp(2rem, 5vw, 2.5rem) clamp(1.5rem, 4vw, 2rem);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            flex: 1 1 min(200px, 100%);
+            padding: clamp(0.8rem, 2vw, 1rem);
+            border-radius: 12px;
+            border: 1.5px solid #e5e7eb;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+            flex: 1 1 100%;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #e91e63;
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+        }
+
+        .contact-form button {
+            background: linear-gradient(135deg,#e91e63,#ff6b6b);
+            color: #fff;
+            padding: clamp(0.8rem, 3vw, 1rem) clamp(2rem, 5vw, 2.5rem);
+            border: none;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            box-shadow: 0 2px 12px rgba(233,30,99,0.10);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(233,30,99,0.2);
+        }
+
+        .contact-success {
+            display: none;
+            margin-top: 1.2rem;
+            color: #16a34a;
+            font-weight: 700;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .contact-info div {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 0.7rem;
+        }
+
+        .contact-info span {
+            font-size: 1.5rem;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design - Mobile First Approach */
+        
+        /* Extra Small devices (phones, 576px and down) */
+        @media (max-width: 575.98px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-container {
+                gap: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .fashion-grid {
+                grid-template-columns: 1fr;
+                max-width: 200px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .filter-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cart-sidebar {
+                width: 100vw;
+                right: -100vw;
+            }
+
+            .about-us .categories-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .ofertas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .fashion-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ofertas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+
+            .hero-content {
+                text-align: left;
+            }
+
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .ofertas-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+
+            .hero-content {
+                text-align: left;
+            }
+
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .ofertas-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .products-header {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .products-header > div:first-child {
+                text-align: left;
+            }
+
+            .cart-sidebar {
+                width: 400px;
+                right: -400px;
+            }
+        }
+
+        /* Extra large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+
+            .hero-content {
+                text-align: left;
+            }
+
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .ofertas-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .products-header {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .products-header > div:first-child {
+                text-align: left;
+            }
+
+            .cart-sidebar {
+                width: 400px;
+                right: -400px;
+            }
+        }
+
+        /* High DPI displays */
+        @media (min-resolution: 2dppx) {
+            .fashion-item span,
+            .category-image,
+            .product-image {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            header,
+            .cart-sidebar,
+            .mobile-menu,
+            .nav-icons,
+            .product-actions,
+            .add-to-cart,
+            .hero-buttons {
+                display: none !important;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            .hero {
+                margin-top: 0;
+                min-height: auto;
+                padding: 2rem 0;
+            }
+            
+            section {
+                page-break-inside: avoid;
+                padding: 1rem 0;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #ffffff;
+                --card-bg: #2a2a2a;
+            }
+            
+            /* Dark mode styles would go here if needed */
+        }
+
+        /* Focus styles for better accessibility */
+        .btn-primary:focus,
+        .btn-secondary:focus,
+        .filter-btn:focus,
+        .add-to-cart:focus,
+        .icon-btn:focus,
+        .action-btn:focus,
+        .qty-btn:focus,
+        .checkout-btn:focus {
+            outline: 2px solid #e91e63;
+            outline-offset: 2px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: 2px solid #e91e63;
+            outline-offset: 2px;
+        }
+
+        /* Improve touch targets for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            .icon-btn,
+            .action-btn,
+            .qty-btn,
+            .filter-btn {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">ModaStyle</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#categorias">Categorías</a></li>
+                <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="icon-btn" onclick="toggleSearch()" aria-label="Buscar">🔍</button>
+                <button class="icon-btn" onclick="toggleWishlist()" aria-label="Lista de deseos">❤️</button>
+                <button class="icon-btn" onclick="toggleCart()" aria-label="Carrito de compras">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+            <div class="mobile-menu" onclick="toggleMobileMenu()" aria-label="Menú móvil">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#inicio" onclick="closeMobileMenu()">Inicio</a></li>
+                <li><a href="#categorias" onclick="closeMobileMenu()">Categorías</a></li>
+                <li><a href="#sobre-nosotros" onclick="closeMobileMenu()">Sobre Nosotros</a></li>
+                <li><a href="#productos" onclick="closeMobileMenu()">Productos</a></li>
+                <li><a href="#ofertas" onclick="closeMobileMenu()">Ofertas</a></li>
+                <li><a href="#contacto" onclick="closeMobileMenu()">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Carrito de Compras</h3>
+            <button class="close-cart" onclick="toggleCart()" aria-label="Cerrar carrito">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div style="text-align: center; padding: 2rem; color: #64748b;">
+                Tu carrito está vacío
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="hero-container">
+                <div class="hero-content fade-in">
+                    <h1>Tu <span class="highlight">Estilo</span>,<br>Tu Personalidad</h1>
+                    <p>Descubre las últimas tendencias en moda. Ropa única y elegante para expresar tu personalidad única. Envío gratis en compras superiores a $100.</p>
+                    <div class="hero-buttons">
+                        <a href="#productos" class="btn-primary">Comprar Ahora</a>
+                        <a href="#categorias" class="btn-secondary">Ver Colecciones</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="fashion-grid">
+                        <div class="fashion-item">
+                            <span>👗</span>
+                        </div>
+                        <div class="fashion-item">
+                            <span>👔</span>
+                        </div>
+                        <div class="fashion-item">
+                            <span>👟</span>
+                        </div>
+                        <div class="fashion-item">
+                            <span>👜</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories" id="categorias">
+            <div class="categories-container">
+                <h2 class="section-title animate-on-scroll">Nuestras Categorías</h2>
+                <p class="section-subtitle animate-on-scroll">Encuentra tu estilo perfecto en nuestras colecciones cuidadosamente seleccionadas</p>
+                
+                <div class="categories-grid">
+                    <div class="category-card animate-on-scroll" onclick="filterProducts('mujer')">
+                        <div class="category-image">👗</div>
+                        <div class="category-content">
+                            <h3>Ropa de Mujer</h3>
+                            <p>Elegancia y sofisticación en cada prenda</p>
+                            <div class="category-price">Desde $29.99</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card animate-on-scroll" onclick="filterProducts('hombre')">
+                        <div class="category-image">👔</div>
+                        <div class="category-content">
+                            <h3>Ropa de Hombre</h3>
+                            <p>Estilo clásico y moderno para el hombre actual</p>
+                            <div class="category-price">Desde $39.99</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card animate-on-scroll" onclick="filterProducts('zapatos')">
+                        <div class="category-image">👟</div>
+                        <div class="category-content">
+                            <h3>Calzado</h3>
+                            <p>Comodidad y estilo para cada ocasión</p>
+                            <div class="category-price">Desde $49.99</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card animate-on-scroll" onclick="filterProducts('accesorios')">
+                        <div class="category-image">👜</div>
+                        <div class="category-content">
+                            <h3>Accesorios</h3>
+                            <p>Complementa tu look con nuestros accesorios</p>
+                            <div class="category-price">Desde $19.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Nosotros Section -->
+        <section class="about-us" id="sobre-nosotros">
+            <div class="categories-container">
+                <div>
+                    <h2 class="section-title animate-on-scroll">Sobre Nosotros</h2>
+                    <p class="section-subtitle animate-on-scroll">
+                        En ModaStyle, creemos que la moda es una forma de expresión única. Nuestra misión es inspirarte a descubrir tu propio estilo con prendas modernas, exclusivas y de alta calidad. Nos apasiona ofrecerte una experiencia de compra innovadora, segura y personalizada, para que cada visita a nuestra tienda sea tan especial como tú. ¡Únete a la revolución de la moda digital y destaca con ModaStyle!
+                    </p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Equipo profesional ModaStyle">
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products" id="productos">
+            <div class="products-container">
+                <div class="products-header">
+                    <div>
+                        <h2 class="section-title">Productos Destacados</h2>
+                        <p class="section-subtitle">Las mejores prendas seleccionadas para ti</p>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterProducts('todos')">Todos</button>
+                        <button class="filter-btn" onclick="filterProducts('mujer')">Mujer</button>
+                        <button class="filter-btn" onclick="filterProducts('hombre')">Hombre</button>
+                        <button class="filter-btn" onclick="filterProducts('zapatos')">Zapatos</button>
+                        <button class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Ofertas Section -->
+        <section class="ofertas" id="ofertas">
+            <div>
+                <div style="text-align:center;">
+                    <h2>¡Ofertas Exclusivas!</h2>
+                    <p>Aprovecha los mejores descuentos y promociones solo por tiempo limitado</p>
+                </div>
+                <div class="ofertas-grid">
+                    <!-- Oferta 1 -->
+                    <div class="oferta-card">
+                        <span>👗</span>
+                        <h3>Vestido Elegante Rosa</h3>
+                        <div class="price">$79.99 <span class="old-price">$99.99</span></div>
+                        <p>¡Descuento especial solo esta semana!</p>
+                        <a href="vestido-elegante-rosa.html" target="_blank">Ver Detalles</a>
+                        <button onclick="addToCart(1)">Agregar al Carrito</button>
+                    </div>
+                    <!-- Oferta 2 -->
+                    <div class="oferta-card">
+                        <span>👔</span>
+                        <h3>Camisa Formal Blanca</h3>
+                        <div class="price">$59.99 <span class="old-price">$79.99</span></div>
+                        <p>¡Llévala con 25% de descuento!</p>
+                        <a href="camisa-formal-blanca.html" target="_blank">Ver Detalles</a>
+                        <button onclick="addToCart(2)">Agregar al Carrito</button>
+                    </div>
+                    <!-- Oferta 3 -->
+                    <div class="oferta-card">
+                        <span>⌚</span>
+                        <h3>Reloj Clásico</h3>
+                        <div class="price">$159.99 <span class="old-price">$199.99</span></div>
+                        <p>¡Oferta limitada, no te lo pierdas!</p>
+                        <a href="reloj-clasico.html" target="_blank">Ver Detalles</a>
+                        <button onclick="addToCart(8)">Agregar al Carrito</button>
+                    </div>
+                </div>
+                <div class="ofertas-footer">
+                    <div>¡Envío gratis en todas las ofertas!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto Section -->
+        <section class="contacto" id="contacto">
+            <div>
+                <div style="text-align:center;margin-bottom:2.5rem;">
+                    <h2>Contáctanos</h2>
+                    <p>¿Tienes dudas, sugerencias o necesitas ayuda? ¡Escríbenos y te responderemos lo antes posible!</p>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="email" name="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <textarea name="mensaje" placeholder="Escribe tu mensaje..." required></textarea>
+                    <button type="submit">Enviar Mensaje</button>
+                    <div id="contactSuccess" class="contact-success">¡Mensaje enviado! Nos pondremos en contacto contigo pronto.</div>
+                </form>
+                <div class="contact-info">
+                    <div><span>📧</span> info@modastyle.com</div>
+                    <div><span>📱</span> +1 (555) 123-4567</div>
+                    <div><span>📍</span> Nueva York, NY</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>ModaStyle</h3>
+                <p>Tu destino para la moda contemporánea. Calidad, estilo y elegancia en cada prenda.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="font-size: 1.5rem;">📧</span> info@modastyle.com<br>
+                    <span style="font-size: 1.5rem;">📱</span> +1 (555) 123-4567<br>
+                    <span style="font-size: 1.5rem;">📍</span> Nueva York, NY
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Categorías</h3>
+                <ul>
+                    <li><a href="#" onclick="filterProducts('mujer')">Ropa de Mujer</a></li>
+                    <li><a href="#" onclick="filterProducts('hombre')">Ropa de Hombre</a></li>
+                    <li><a href="#" onclick="filterProducts('zapatos')">Calzado</a></li>
+                    <li><a href="#" onclick="filterProducts('accesorios')">Accesorios</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Atención al Cliente</h3>
+                <ul>
+                    <li><a href="#">Centro de Ayuda</a></li>
+                    <li><a href="#">Política de Devoluciones</a></li>
+                    <li><a href="#">Guía de Tallas</a></li>
+                    <li><a href="#">Envíos y Entregas</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Mi Cuenta</h3>
+                <ul>
+                    <li><a href="#">Iniciar Sesión</a></li>
+                    <li><a href="#">Crear Cuenta</a></li>
+                    <li><a href="#">Mis Pedidos</a></li>
+                    <li><a href="#">Lista de Deseos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ModaStyle. Todos los derechos reservados. | Política de Privacidad | Términos y Condiciones</p>
+        </div>
+    </footer>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 1,
+                name: "Vestido Elegante Rosa",
+                category: "mujer",
+                price: 79.99,
+                oldPrice: 99.99,
+                rating: 4.8,
+                reviews: 124,
+                badge: "NUEVO",
+                emoji: "👗"
+            },
+            {
+                id: 2,
+                name: "Camisa Formal Blanca",
+                category: "hombre",
+                price: 59.99,
+                oldPrice: 79.99,
+                rating: 4.6,
+                reviews: 89,
+                badge: "OFERTA",
+                emoji: "👔"
+            },
+            {
+                id: 3,
+                name: "Sneakers Deportivos",
+                category: "zapatos",
+                price: 129.99,
+                oldPrice: 149.99,
+                rating: 4.9,
+                reviews: 203,
+                badge: "POPULAR",
+                emoji: "👟"
+            },
+            {
+                id: 4,
+                name: "Bolso de Cuero Premium",
+                category: "accesorios",
+                price: 199.99,
+                oldPrice: 249.99,
+                rating: 4.7,
+                reviews: 67,
+                badge: "LUJO",
+                emoji: "👜"
+            },
+            {
+                id: 5,
+                name: "Falda Midi Negra",
+                category: "mujer",
+                price: 49.99,
+                oldPrice: 64.99,
+                rating: 4.5,
+                reviews: 156,
+                badge: "SALE",
+                emoji: "👗"
+            },
+            {
+                id: 6,
+                name: "Chaqueta de Cuero",
+                category: "hombre",
+                price: 299.99,
+                oldPrice: 399.99,
+                rating: 4.8,
+                reviews: 91,
+                badge: "PREMIUM",
+                emoji: "🧥"
+            },
+            {
+                id: 7,
+                name: "Tacones Elegantes",
+                category: "zapatos",
+                price: 89.99,
+                oldPrice: 119.99,
+                rating: 4.4,
+                reviews: 78,
+                badge: "NUEVO",
+                emoji: "👠"
+            },
+            {
+                id: 8,
+                name: "Reloj Clásico",
+                category: "accesorios",
+                price: 159.99,
+                oldPrice: 199.99,
+                rating: 4.6,
+                reviews: 145,
+                badge: "OFERTA",
+                emoji: "⌚"
+            }
+        ];
+
+        // Shopping cart
+        let cart = [];
+        let wishlist = [];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            initializeAnimations();
+            updateCartCount();
+            setupContactForm();
+        });
+
+        // Load products
+        function loadProducts(filter = 'todos') {
+            const productsGrid = document.getElementById('productsGrid');
+            // IDs de productos en ofertas
+            const ofertasIds = [1, 2, 8]; // Vestido Elegante Rosa, Camisa Formal Blanca, Reloj Clásico
+            let filteredProducts = filter === 'todos'
+                ? products.filter(p => !ofertasIds.includes(p.id))
+                : products.filter(p => p.category === filter && !ofertasIds.includes(p.id));
+            
+            // Mapeo de id de producto a archivo de detalles
+            const productDetailPages = {
+                1: 'vestido-elegante-rosa.html',
+                2: 'camisa-formal-blanca.html',
+                3: 'sneakers-deportivos.html',
+                4: 'bolso-cuero-premium.html',
+                5: 'falda-midi-negra.html',
+                6: 'chaqueta-cuero.html',
+                7: 'tacones-elegantes.html',
+                8: 'reloj-clasico.html'
+            };
+            
+            productsGrid.innerHTML = filteredProducts.map(product => {
+                const detailPage = productDetailPages[product.id];
+                if (detailPage) {
+                    return `
+                    <a href="${detailPage}" target="_blank" style="text-decoration:none;color:inherit;">
+                        <div class="product-card" data-category="${product.category}">
+                            <div class="product-image">
+                                ${product.emoji}
+                                <div class="product-badge">${product.badge}</div>
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="event.preventDefault();toggleWishlist(${product.id})" title="Agregar a favoritos" aria-label="Agregar a favoritos">❤️</button>
+                                    <button class="action-btn" onclick="event.preventDefault();quickView(${product.id})" title="Vista rápida" aria-label="Vista rápida">👁️</button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-name">${product.name}</div>
+                                <div class="product-category">${getCategoryName(product.category)}</div>
+                                <div class="product-price">
+                                    <div>
+                                        <span class="price">${product.price}</span>
+                                        ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <div class="stars">${'⭐'.repeat(Math.floor(product.rating))}</div>
+                                    <span class="rating-text">${product.rating} (${product.reviews})</span>
+                                </div>
+                                <button class="add-to-cart" onclick="event.preventDefault();addToCart(${product.id})">
+                                    Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                    `;
+                } else {
+                    return `
+                    <div class="product-card" data-category="${product.category}">
+                        <div class="product-image">
+                            ${product.emoji}
+                            <div class="product-badge">${product.badge}</div>
+                            <div class="product-actions">
+                                <button class="action-btn" onclick="toggleWishlist(${product.id})" title="Agregar a favoritos" aria-label="Agregar a favoritos">❤️</button>
+                                <button class="action-btn" onclick="quickView(${product.id})" title="Vista rápida" aria-label="Vista rápida">👁️</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-category">${getCategoryName(product.category)}</div>
+                            <div class="product-price">
+                                <div>
+                                    <span class="price">${product.price}</span>
+                                    ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <div class="stars">${'⭐'.repeat(Math.floor(product.rating))}</div>
+                                <span class="rating-text">${product.rating} (${product.reviews})</span>
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    `;
+                }
+            }).join('');
+        }
+
+        // Filter products
+        function filterProducts(category) {
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Find the button that was clicked
+            const clickedBtn = Array.from(document.querySelectorAll('.filter-btn')).find(btn => 
+                btn.textContent.toLowerCase().includes(category === 'todos' ? 'todos' : 
+                category === 'mujer' ? 'mujer' : 
+                category === 'hombre' ? 'hombre' : 
+                category === 'zapatos' ? 'zapatos' : 'accesorios')
+            );
+            
+            if (clickedBtn) {
+                clickedBtn.classList.add('active');
+            }
+            
+            // Load filtered products
+            loadProducts(category);
+            
+            // Scroll to products section if coming from category cards
+            if (event && event.target && event.target.classList.contains('category-card')) {
+                document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Get category display name
+        function getCategoryName(category) {
+            const names = {
+                'mujer': 'Ropa de Mujer',
+                'hombre': 'Ropa de Hombre',
+                'zapatos': 'Calzado',
+                'accesorios': 'Accesorios'
+            };
+            return names[category] || category;
+        }
+
+        // Add to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            updateCartCount();
+            updateCartSidebar();
+            showNotification(`${product.name} agregado al carrito!`);
+        }
+
+        // Remove from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            updateCartSidebar();
+        }
+
+        // Update quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartCount();
+                    updateCartSidebar();
+                }
+            }
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Update cart sidebar
+        function updateCartSidebar() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: #64748b;">
+                        Tu carrito está vacío
+                    </div>
+                `;
+                cartTotal.textContent = '$0.00';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image">${item.emoji}</div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${item.price}</div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)" aria-label="Disminuir cantidad">-</button>
+                            <span style="margin: 0 1rem;">${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)" aria-label="Aumentar cantidad">+</button>
+                            <button class="qty-btn" onclick="removeFromCart(${item.id})" style="margin-left: 1rem; background: #fee2e2; color: #dc2626;" aria-label="Eliminar producto">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = `${total.toFixed(2)}`;
+        }
+
+        // Toggle cart
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cartSidebar');
+            cartSidebar.classList.toggle('open');
+            updateCartSidebar();
+            
+            // Close mobile menu if open
+            closeMobileMenu();
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Tu carrito está vacío', 'error');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const items = cart.map(item => `${item.name} (x${item.quantity})`).join('\n');
+            
+            alert(`¡Gracias por tu compra!\n\nProductos:\n${items}\n\nTotal: ${total.toFixed(2)}\n\nTe enviaremos los detalles de envío por email.`);
+            
+            // Clear cart
+            cart = [];
+            updateCartCount();
+            updateCartSidebar();
+            toggleCart();
+        }
+
+        // Toggle wishlist
+        function toggleWishlist(productId) {
+            if (productId) {
+                const product = products.find(p => p.id === productId);
+                const isInWishlist = wishlist.some(item => item.id === productId);
+                
+                if (isInWishlist) {
+                    wishlist = wishlist.filter(item => item.id !== productId);
+                    showNotification(`${product.name} removido de favoritos`);
+                } else {
+                    wishlist.push(product);
+                    showNotification(`${product.name} agregado a favoritos`);
+                }
+            } else {
+                showNotification(`Tienes ${wishlist.length} productos en favoritos`);
+            }
+        }
+
+        // Toggle search
+        function toggleSearch() {
+            const searchTerm = prompt('¿Qué estás buscando?');
+            if (searchTerm) {
+                const results = products.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    p.category.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                
+                if (results.length > 0) {
+                    showNotification(`Encontrados ${results.length} productos para "${searchTerm}"`);
+                    // You could implement actual search results display here
+                } else {
+                    showNotification(`No se encontraron productos para "${searchTerm}"`, 'error');
+                }
+            }
+        }
+
+        // Quick view
+        function quickView(productId) {
+            const product = products.find(p => p.id === productId);
+            alert(`Vista Rápida:\n\n${product.name}\nPrecio: ${product.price}\nCategoría: ${getCategoryName(product.category)}\nCalificación: ${product.rating}⭐ (${product.reviews} reseñas)\n\n¡Haz clic en "Agregar al Carrito" para comprarlo!`);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'error' ? '#fee2e2' : '#dcfce7'};
+                color: ${type === 'error' ? '#dc2626' : '#166534'};
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                z-index: 3000;
+                animation: slideIn 0.3s ease;
+                max-width: calc(100vw - 40px);
+                word-wrap: break-word;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('open');
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.remove('open');
+        }
+
+        // Setup contact form
+        function setupContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const successDiv = document.getElementById('contactSuccess');
+                    successDiv.style.display = 'block';
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successDiv.style.display = 'none';
+                    }, 5000);
+                });
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu after clicking
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Initialize animations
+        function initializeAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Close cart when clicking outside
+        document.addEventListener('click', function(event) {
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartBtn = event.target.closest('.icon-btn');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileMenuBtn = event.target.closest('.mobile-menu');
+            
+            // Close cart if clicking outside
+            if (!cartSidebar.contains(event.target) && !cartBtn) {
+                cartSidebar.classList.remove('open');
+            }
+            
+            // Close mobile menu if clicking outside
+            if (!mobileNav.contains(event.target) && !mobileMenuBtn) {
+                mobileNav.classList.remove('open');
+            }
+        });
+
+        // Handle resize events
+        window.addEventListener('resize', function() {
+            // Close mobile menu on resize
+            if (window.innerWidth > 991) {
+                closeMobileMenu();
+            }
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            // Close cart with Escape key
+            if (e.key === 'Escape') {
+                const cartSidebar = document.getElementById('cartSidebar');
+                const mobileNav = document.getElementById('mobileNav');
+                
+                if (cartSidebar.classList.contains('open')) {
+                    cartSidebar.classList.remove('open');
+                }
+                
+                if (mobileNav.classList.contains('open')) {
+                    closeMobileMenu();
+                }
+            }
+        });
+
+        // Add custom animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('🛒 ModaStyle E-commerce totalmente responsivo cargado exitosamente!');
+    </script>
+</body>
+</html>

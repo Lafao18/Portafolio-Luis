@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Lafao - Desarrollador Web Profesional</title>
+    <link rel="icon" type="image/x-icon" href="./imagenes/logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Luis Lafao</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" data-translate="nav-home">Inicio</a></li>
+                <li><a href="#about" data-translate="nav-about">Sobre Mí</a></li>
+                <li><a href="#services" data-translate="nav-services">Servicios</a></li>
+                <li><a href="#portfolio" data-translate="nav-portfolio">Portafolio</a></li>
+                <li><a href="#contact" data-translate="nav-contact">Contacto</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="lang-toggle" id="lang-toggle">EN</button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Luis Lafao</h1>
+            <p class="hero-subtitle" data-translate="hero-desc">Desarrollador Web Profesional & Freelancer Creativo</p>
+            <a href="#services" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                <span data-translate="cta-text">Ver Mis Servicios</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image slide-in-left">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="./imagenes/logo.png" alt="Foto de Luis Lafao" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\'fas fa-user\'></i>';" />
+                        </div>
+                        <h3>Luis Lafao</h3>
+                        <p>Desarrollador Web Full-Stack</p>
+                    </div>
+                </div>
+                <div class="about-text slide-in-right">
+                    <h2 data-translate="about-title">Sobre Mí</h2>
+                    <p data-translate="about-p1">Soy un desarrollador web profesional especializado en crear sitios web modernos, responsivos y optimizados. Con experiencia en las últimas tecnologías, me dedico a transformar ideas en experiencias digitales excepcionales.</p>
+                    <p data-translate="about-p2">Mi enfoque se centra en la calidad, la funcionalidad y el diseño atractivo. Cada proyecto es una oportunidad para crear algo único que impulse el éxito de mis clientes.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item fade-in">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label" data-translate="stat-projects">Proyectos Completados</span>
+                        </div>
+                        <div class="stat-item fade-in">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label" data-translate="stat-experience">Años de Experiencia</span>
+                        </div>
+                        <div class="stat-item fade-in">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label" data-translate="stat-satisfaction">Satisfacción del Cliente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title fade-in" data-translate="services-title">Desarrollo Web Profesional</h2>
+            <p class="section-subtitle fade-in" data-translate="services-subtitle">Creo sitios web que no solo se ven increíbles, sino que también funcionan perfectamente en todos los dispositivos</p>
+            
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3 data-translate="service-title">Desarrollo Web Completo</h3>
+                <p data-translate="service-description">Desde landing pages hasta aplicaciones web complejas, desarrollo soluciones web modernas que impulsan tu negocio al siguiente nivel.</p>
+                
+                <ul class="service-features">
+                    <li data-translate="feature-1">Diseño responsivo y móvil-first</li>
+                    <li data-translate="feature-2">Optimización SEO y velocidad</li>
+                    <li data-translate="feature-3">Integración de sistemas de pago</li>
+                    <li data-translate="feature-4">Panel de administración</li>
+                    <li data-translate="feature-5">Seguridad y respaldos automáticos</li>
+                    <li data-translate="feature-6">Soporte técnico continuo</li>
+                </ul>
+                
+                <a href="#contact" class="service-button">
+                    <i class="fas fa-paper-plane"></i>
+                    <span data-translate="service-btn">Solicitar Cotización</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nota Importante -->
+    <div class="important-note fade-in" id="important-note">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+            <strong data-translate="important-note-title">Nota Importante:</strong> 
+            <span data-translate="important-note-text">Las siguientes páginas son ejemplos visuales de sitios web dinámicos creados con fines demostrativos. No representan servicios oficiales ni proyectos reales, sino que muestran el tipo de trabajo que puedo realizar como parte de mis servicios.</span>
+        </div>
+    </div>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title fade-in" data-translate="portfolio-title">Mis Proyectos</h2>
+            <p class="section-subtitle fade-in" data-translate="portfolio-subtitle">Ejemplos de sitios web que he desarrollado para diferentes industrias</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 data-translate="project-1-title">E-commerce Moderno</h3>
+                        <p data-translate="project-1-desc">Tienda online completa con carrito de compras, sistema de pagos y panel administrativo.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                        </div>
+                        <a href="./E-commerce Moderno.html" class="portfolio-link">
+                            <span data-translate="view-project">Ver Proyecto</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 data-translate="project-2-title">Portal Corporativo</h3>
+                        <p data-translate="project-2-desc">Landing page empresarial optimizada para conversión y captación de clientes.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <a href="./landing page empresarial.html" class="portfolio-link">
+                            <span data-translate="view-project-2">Ver Proyecto</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 data-translate="project-3-title">Portfolio Creativo</h3>
+                        <p data-translate="project-3-desc">Portafolio interactivo con galería de imágenes y efectos visuales impactantes.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">SCSS</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">WebGL</span>
+                        </div>
+                        <a href="./Portfolio Creativo.html" class="portfolio-link">
+                            <span data-translate="view-project-3">Ver Proyecto</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title fade-in" data-translate="contact-title">¿Listo para tu Proyecto?</h2>
+                <p class="section-subtitle fade-in" data-translate="contact-subtitle">Contacta conmigo para transformar tu idea en una realidad digital exitosa</p>
+                
+                <div class="contact-links">
+                    <a href="https://www.fiverr.com/s/pd2ajoG" target="_blank" class="contact-link fiverr fade-in">
+                        <svg class="fiverr-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="16" fill="#fff"/>
+                            <text x="8" y="22" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#1dbf73">fiverr</text>
+                        </svg>
+                        <span data-translate="contact-fiverr">Ver en Fiverr</span>
+                    </a>
+                                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Luis Lafao. <span data-translate="footer-rights">Todos los derechos reservados.</span></p>
+            <p><span data-translate="footer-made">Hecho con</span> <i class="fas fa-heart" style="color: #ff6b6b;"></i> <span data-translate="footer-passion">y pasión por el desarrollo web</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

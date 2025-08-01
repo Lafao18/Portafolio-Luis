@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFlow - Soluciones Tecnológicas Innovadoras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            opacity: 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            color: #374151;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2563eb;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #374151;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem;
+            margin-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e5e7eb;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #2563eb;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 20px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 5rem 2rem;
+            background: #f8fafc;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.1);
+        }
+
+        .team-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-card .role {
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .team-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Contact Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        .close:hover {
+            color: #2563eb;
+        }
+
+        .contact-form {
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2563eb;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #2563eb;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #cbd5e1;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading::before {
+            content: '';
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .cta-nav {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading"></div>
+
+    <header>
+        <nav>
+            <a href="#" class="logo">TechFlow</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="cta-nav">Comenzar Proyecto</a>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2 style="color: #2563eb; margin-bottom: 1rem;">Contáctanos</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Empresa</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="hero-container">
+                <div class="hero-content fade-in">
+                    <h1>Transformamos Ideas en <span class="highlight">Soluciones Digitales</span></h1>
+                    <p>Desarrollamos software innovador, aplicaciones web y móviles que impulsan el crecimiento de tu negocio. Más de 200 empresas confían en nosotros.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn-primary" onclick="openContactModal()">Iniciar Proyecto</a>
+                        <a href="#servicios" class="btn-secondary">Ver Servicios</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%232563eb;stop-opacity:0.1'/%3E%3Cstop offset='100%25' style='stop-color:%237c3aed;stop-opacity:0.1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='600' fill='url(%23bg)'/%3E%3Cg fill='%232563eb' opacity='0.8'%3E%3Ccircle cx='150' cy='120' r='4'/%3E%3Ccircle cx='650' cy='180' r='6'/%3E%3Ccircle cx='200' cy='400' r='3'/%3E%3Ccircle cx='700' cy='450' r='5'/%3E%3C/g%3E%3Cg fill='%237c3aed' opacity='0.6'%3E%3Crect x='100' y='200' width='600' height='200' rx='15' fill='white' stroke='%23e5e7eb' stroke-width='2'/%3E%3Crect x='120' y='220' width='100' height='8' rx='4' fill='%23e5e7eb'/%3E%3Crect x='120' y='240' width='150' height='8' rx='4' fill='%23e5e7eb'/%3E%3Crect x='120' y='260' width='80' height='8' rx='4' fill='%23e5e7eb'/%3E%3Crect x='120' y='290' width='560' height='80' rx='8' fill='%23f8fafc'/%3E%3Crect x='140' y='310' width='60' height='40' rx='8' fill='%232563eb'/%3E%3Crect x='220' y='310' width='60' height='40' rx='8' fill='%237c3aed'/%3E%3Crect x='300' y='310' width='60' height='40' rx='8' fill='%2310b981'/%3E%3C/g%3E%3C/svg%3E" alt="Desarrollo de Software">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="servicios">
+            <div class="services-container">
+                <h2 class="section-title animate-on-scroll">Nuestros Servicios</h2>
+                <p class="section-subtitle animate-on-scroll">Ofrecemos soluciones tecnológicas integrales para impulsar tu negocio hacia el éxito digital</p>
+                
+                <div class="services-grid">
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">💻</div>
+                        <h3>Desarrollo Web</h3>
+                        <p>Creamos aplicaciones web modernas, rápidas y escalables utilizando las últimas tecnologías como React, Vue.js y Node.js.</p>
+                    </div>
+                    
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">📱</div>
+                        <h3>Apps Móviles</h3>
+                        <p>Desarrollamos aplicaciones móviles nativas e híbridas para iOS y Android con experiencias de usuario excepcionales.</p>
+                    </div>
+                    
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">☁️</div>
+                        <h3>Cloud Computing</h3>
+                        <p>Migramos y optimizamos tu infraestructura en la nube con AWS, Google Cloud y Azure para máxima eficiencia.</p>
+                    </div>
+                    
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">🤖</div>
+                        <h3>Inteligencia Artificial</h3>
+                        <p>Implementamos soluciones de IA y machine learning para automatizar procesos y generar insights valiosos.</p>
+                    </div>
+                    
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">🎨</div>
+                        <h3>UX/UI Design</h3>
+                        <p>Diseñamos interfaces intuitivas y atractivas que mejoran la experiencia del usuario y aumentan la conversión.</p>
+                    </div>
+                    
+                    <div class="service-card animate-on-scroll">
+                        <div class="service-icon">🔧</div>
+                        <h3>Consultoría Tech</h3>
+                        <p>Asesoramos en la transformación digital de tu empresa con estrategias personalizadas y tecnologías innovadoras.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stats-container">
+                <div class="stat-item animate-on-scroll">
+                    <div class="stat-number" data-target="200">0+</div>
+                    <div class="stat-label">Proyectos Completados</div>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <div class="stat-number" data-target="50">0+</div>
+                    <div class="stat-label">Clientes Satisfechos</div>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <div class="stat-number" data-target="98">0%</div>
+                    <div class="stat-label">Tasa de Satisfacción</div>
+                </div>
+                <div class="stat-item animate-on-scroll">
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">Años de Experiencia</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team" id="equipo">
+            <div class="team-container">
+                <h2 class="section-title animate-on-scroll">Nuestro Equipo</h2>
+                <p class="section-subtitle animate-on-scroll">Profesionales apasionados por la tecnología y comprometidos con la excelencia</p>
+                
+                <div class="team-grid">
+                    <div class="team-card animate-on-scroll">
+                        <div class="team-avatar">AH</div>
+                        <h3>Ana Hernández</h3>
+                        <div class="role">CEO & Founder</div>
+                        <p>Líder visionaria con 10 años de experiencia en transformación digital y gestión de equipos tecnológicos.</p>
+                    </div>
+                    
+                    <div class="team-card animate-on-scroll">
+                        <div class="team-avatar">CL</div>
+                        <h3>Carlos López</h3>
+                        <div class="role">CTO</div>
+                        <p>Arquitecto de software experto en cloud computing y desarrollo de aplicaciones escalables de alta disponibilidad.</p>
+                    </div>
+                    
+                    <div class="team-card animate-on-scroll">
+                        <div class="team-avatar">MR</div>
+                        <h3>María Rodríguez</h3>
+                        <div class="role">Head of Design</div>
+                        <p>Diseñadora UX/UI con pasión por crear experiencias digitales memorables y centradas en el usuario.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="contacto">
+            <div class="cta-container">
+                <h2 class="animate-on-scroll">¿Listo para Transformar tu Negocio?</h2>
+                <p class="animate-on-scroll">Conversemos sobre tu proyecto y descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.</p>
+                <a href="#" class="btn-primary animate-on-scroll" onclick="openContactModal()">Contactar Ahora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>TechFlow</h3>
+                <p>Transformando ideas en soluciones digitales innovadoras que impulsan el crecimiento empresarial.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="#servicios">Desarrollo Web</a></li>
+                    <li><a href="#servicios">Apps Móviles</a></li>
+                    <li><a href="#servicios">Cloud Computing</a></li>
+                    <li><a href="#servicios">Inteligencia Artificial</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="#inicio">Nosotros</a></li>
+                    <li><a href="#equipo">Equipo</a></li>
+                    <li><a href="#">Carreras</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li>📧 info@techflow.com</li>
+                    <li>📱 +1 (555) 123-4567</li>
+                    <li>📍 San Francisco, CA</li>
+                    <li>🌐 www.techflow.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechFlow. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales
+        let animatedCounters = false;
+
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.body.style.opacity = '1';
+                document.body.style.transition = 'opacity 0.5s ease-in-out';
+            }, 1500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Close mobile menu if open
+                    const navLinks = document.getElementById('navLinks');
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const nav = document.querySelector('nav');
+            
+            if (!nav.contains(event.target)) {
+                navLinks.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 100;
+            const isPercentage = element.textContent.includes('%');
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                if (isPercentage) {
+                    element.textContent = Math.floor(current) + '%';
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 20);
+        }
+
+        // Animate counters when stats section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animatedCounters) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        animateCounter(counter);
+                    });
+                    animatedCounters = true;
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        statsObserver.observe(document.querySelector('.stats'));
+
+        // Contact Modal functionality
+        const modal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+        const contactForm = document.getElementById('contactForm');
+
+        function openContactModal() {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeContactModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        closeModal.addEventListener('click', closeContactModal);
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                closeContactModal();
+            }
+        });
+
+        // Handle contact form submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const company = formData.get('company');
+            const message = formData.get('message');
+            
+            // Simulate form submission
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(`¡Gracias ${name}! Hemos recibido tu mensaje y te contactaremos pronto.\n\nEmail: ${email}\nEmpresa: ${company || 'No especificada'}\nMensaje: ${message}`);
+                
+                // Reset form
+                contactForm.reset();
+                closeContactModal();
+                
+                // Restore button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+
+        // Enhanced service cards hover effect
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+                this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            });
+        });
+
+        // Enhanced team cards hover effect
+        document.querySelectorAll('.team-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotateY(5deg)';
+                this.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateY(0deg)';
+                this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const parallax = scrolled * 0.3;
+            
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${parallax}px)`;
+            }
+        });
+
+        // Dynamic background color change based on scroll
+        let ticking = false;
+        
+        function updateBackgroundColor() {
+            const scrolled = window.pageYOffset;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = scrolled / maxScroll;
+            
+            const hue1 = 220 + (scrollPercentage * 20);
+            const hue2 = 240 + (scrollPercentage * 20);
+            
+            document.body.style.background = `linear-gradient(135deg, 
+                hsl(${hue1}, 70%, 95%) 0%, 
+                hsl(${hue2}, 50%, 90%) 100%)`;
+            
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateBackgroundColor);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Add keyboard navigation for accessibility
+        document.addEventListener('keydown', function(e) {
+            // Close modal with Escape key
+            if (e.key === 'Escape' && modal.style.display === 'block') {
+                closeContactModal();
+            }
+            
+            // Toggle mobile menu with Enter key when focused
+            if (e.key === 'Enter' && document.activeElement === document.getElementById('mobileMenu')) {
+                document.getElementById('mobileMenu').click();
+            }
+        });
+
+        // Add focus management for modal
+        modal.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                const focusableElements = modal.querySelectorAll('input, textarea, button, [tabindex]');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+
+        // Intersection observer for better performance
+        const lazyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize all animations
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            lazyObserver.observe(el);
+        });
+
+        // Add smooth scroll behavior for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Performance optimization: Throttle scroll events
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+            scrollTimeout = setTimeout(function() {
+                // Scroll-dependent code here
+                requestTick();
+            }, 10);
+        });
+
+        console.log('🚀 TechFlow website loaded successfully!');
+    </script>
+</body>
+</html>
